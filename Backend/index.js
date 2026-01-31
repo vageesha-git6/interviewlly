@@ -15,10 +15,14 @@ app.use(clerkMiddleware());
 
 app.use(
   cors({
-    origin: "",
-    Credential: true,
+    origin: "http://localhost:5173",
+    credentials: true,
   })
 );
+
+app.get("/",(req,res)=>{
+  res.send("Hello from Server")
+})
 app.use("/api/inngest", serve({ client: inngest, functions }));
 // const __dirname =path.resolve()
 

@@ -4,11 +4,22 @@ import { PROBLEMS } from "../data/problem";
 import { FaArrowRight, FaCode } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { getDifficultyBadgeClass } from "../lib/utils";
+import { useActiveSessions } from "../hooks/useSession";
 const Problem = () => {
   const problems = Object.values(PROBLEMS);
-  const easyProblems = problems.filter((problem) => problem.difficulty.toLowerCase() === "easy").length;
-  const mediumProblems = problems.filter((problem) => problem.difficulty.toLowerCase() === "medium").length;
-  const hardProblems = problems.filter((problem) => problem.difficulty.toLowerCase() === "hard").length;
+  const easyProblems = problems.filter(
+    (problem) => problem.difficulty.toLowerCase() === "easy",
+  ).length;
+  const mediumProblems = problems.filter(
+    (problem) => problem.difficulty.toLowerCase() === "medium",
+  ).length;
+  const hardProblems = problems.filter(
+    (problem) => problem.difficulty.toLowerCase() === "hard",
+  ).length;
+
+  const { data: activeSessions, isLoading, error } = useActiveSessions();
+
+  console.log(activeSessions);
 
   return (
     <div className="min-h-screen bg-base-200">
@@ -52,19 +63,17 @@ const Problem = () => {
                         {problem.category}
                       </p>
                     </div>
-                  <p className="text-base-content/80 mb-3">
-                    {problem.description.text}
-                  </p>
+                    <p className="text-base-content/80 mb-3">
+                      {problem.description.text}
+                    </p>
                   </div>
 
                   {/* rightside */}
 
                   <div className="flex items-center gap-2 text-primary">
                     <span className="font-medium">Solve</span>
-                    <FaArrowRight className="size-5"/>
-
+                    <FaArrowRight className="size-5" />
                   </div>
-
                 </div>
               </div>
             </Link>
@@ -79,26 +88,22 @@ const Problem = () => {
                 <div className="stat-title">Total Problems</div>
                 <div className="stat-value text-primary">{problems.length}</div>
               </div>
-                <div className="stat">
-                  <div className="stat-title">Easy</div>
-                  <div className="stat-value text-success">{easyProblems}</div>
-                </div>
-                
               <div className="stat">
-                 <div className="stat-title">Medium</div>
+                <div className="stat-title">Easy</div>
+                <div className="stat-value text-success">{easyProblems}</div>
+              </div>
+
+              <div className="stat">
+                <div className="stat-title">Medium</div>
                 <div className="stat-value text-warning">{mediumProblems}</div>
               </div>
               <div className="stat">
-                 <div className="stat-title">Hard</div>
+                <div className="stat-title">Hard</div>
                 <div className="stat-value text-error">{hardProblems}</div>
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
     </div>
   );
