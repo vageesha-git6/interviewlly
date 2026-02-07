@@ -1,6 +1,6 @@
 import React from "react";
 import { LANGUAGE_CONFIG } from "../data/problem";
-import { LoaderIcon } from "react-hot-toast";
+import { Loader2Icon } from "lucide-react";
 import { FaPlay } from "react-icons/fa";
 import Editor from "@monaco-editor/react";
 
@@ -17,14 +17,14 @@ const CodeEditor = ({
       <div className="flex items-center justify-between px-4 py-3 bg-base-100 border-t border-base-300">
         <div className="flex items-center gap-3">
           <img
-            src={LANGUAGE_CONFIG[selectedLang].icon}
-            alt={LANGUAGE_CONFIG[selectedLang].name}
+            src={LANGUAGE_CONFIG[selectedLang]?.icon}
+            alt={LANGUAGE_CONFIG[selectedLang]?.name}
             className="size-6 "
           />
           <select
             value={selectedLang}
             className="select select-sm"
-            onChange={onlanguagechange}
+            onChange={onLanguageChange}
           >
             {Object.entries(LANGUAGE_CONFIG).map(([key, lang]) => (
               <option key={key} value={key}>
@@ -41,12 +41,12 @@ const CodeEditor = ({
         >
           {isRunning ? (
             <>
-              <LoaderIcon className="size-4 animate-spin" />
+              <Loader2Icon className="w-4 h-4 animate-spin" />
               Running...
             </>
           ) : (
             <>
-              <FaPlay className="size-4" />
+              <FaPlay className="w-4 h-4" />
               Run Code
             </>
           )}
@@ -56,7 +56,7 @@ const CodeEditor = ({
       <div className="flex-1">
         <Editor
           height={"100%"}
-          language={LANGUAGE_CONFIG[selectedLang].monacoLang}
+          language={LANGUAGE_CONFIG[selectedLang]?.monacoLang}
           value={code}
           onChange={onCodeChange}
           theme="vs-dark"

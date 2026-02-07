@@ -39,7 +39,12 @@ app.use("/api/sessions", sessionRouter);
 
 
 const Port = 4000;
-app.listen(Port, () => {
-  connectDb();
-  console.log(`Server is running on ${Port}`);
-});
+
+async function start() {
+  await connectDb();
+  app.listen(Port, () => {
+    console.log(`Server is running on ${Port}`);
+  });
+}
+
+start();

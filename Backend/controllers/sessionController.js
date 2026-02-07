@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Session from "../models/Session.js";
 import { streamClient, chatClient } from "../lib/stream.js";
 
@@ -79,7 +80,11 @@ export async function getMyRecentSession(req, res) {
 export async function getSessionById(req, res) {
   // Implementation for creating a session
   try {
-    const { id } = req.params;
+    const id = req.params?.id || req.body?.id || req.query?.id;
+    if (!id) return res.status(400).json({ message: "Session id is required" });
+    if (!mongoose.Types.ObjectId.isValid(id))
+      return res.status(400).json({ message: "Invalid session id" });
+
     const session = await Session.findById(id)
       .populate("host", "name profileImage email clerkId")
       .populate("participant", "name profileImage email clerkId");
@@ -95,7 +100,10 @@ export async function getSessionById(req, res) {
 export async function joinSession(req, res) {
   // Implementation for creating a session
   try {
-    const { id } = req.params;
+    const id = req.params?.id || req.body?.id || req.query?.id;
+    if (!id) return res.status(400).json({ message: "Session id is required" });
+    if (!mongoose.Types.ObjectId.isValid(id))
+      return res.status(400).json({ message: "Invalid session id" });
     const userId = req.user._id;
     const clerkId = req.user.clerkId;
 
@@ -134,7 +142,10 @@ export async function joinSession(req, res) {
 export async function endSession(req, res) {
   // Implementation for creating a session
   try {
-    const { id } = req.params;
+    const id = req.params?.id || req.body?.id || req.query?.id;
+    if (!id) return res.status(400).json({ message: "Session id is required" });
+    if (!mongoose.Types.ObjectId.isValid(id))
+      return res.status(400).json({ message: "Invalid session id" });
     const userId = req.user._id;
     const session = await Session.findById(id);
     if (!session) {
