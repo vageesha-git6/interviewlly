@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React from "react";
 import { SignInButton } from "@clerk/clerk-react";
-import { FaVideo, FaCode, FaHighlighter, FaLanguage} from "react-icons/fa";
+import { FaVideo, FaCode, FaHighlighter, FaLanguage } from "react-icons/fa";
 const Home = () => {
   return (
     <div className="bg-linear-to-br from-base-100 via-base-200 to-base-300 ">
@@ -88,9 +88,9 @@ const Home = () => {
           {/* right image */}
 
           <img
-            src="/logo.png"
+            src="/banner.png"
             alt="Hero"
-            className="w-full h-auto rounded-3xl shadow-2xl border-4 border-base-100 hover:scale-105 transition-transform duration-300"
+            className="w-full h-[400px] rounded-3xl shadow-2xl border-4 border-base-100 hover:scale-105 transition-transform duration-300"
           />
         </div>
       </div>
@@ -145,11 +145,80 @@ const Home = () => {
               <h3 className="card-title">HighLight Code</h3>
               <p className="text-base-content">
                 Collaborative Real-Time Coding with Syntax Highlighting.
-              
               </p>
             </div>
           </div>
         </div>
+
+        {/* footer here */}
+        <footer className="bg-base-200 border-t border-primary/20 py-12 mt-12">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="grid md:grid-cols-4 gap-8 mb-8">
+              <div>
+                <img src="/logo.png" alt="Logo" className="w-30 h-25 mb-4" />
+                <p className="text-base-content/70">
+                  Code Together, Learn Together
+                </p>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-4">Product</h4>
+                <ul className="space-y-2 text-base-content/70">
+                  <li>
+                    <Link to="/" className="hover:text-primary">
+                      Features
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/" className="hover:text-primary">
+                      Pricing
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/" className="hover:text-primary">
+                      Blog
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-4">Company</h4>
+                <ul className="space-y-2 text-base-content/70">
+                  <li>
+                    <Link to="/" className="hover:text-primary">
+                      About
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/" className="hover:text-primary">
+                      Contact
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/" className="hover:text-primary">
+                      Privacy
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-4">Account</h4>
+                <SignInButton mode="modal">
+                  <button className="text-primary hover:underline cursor-pointer">
+                    Start Coding Now
+                  </button>
+                </SignInButton>
+              </div>
+            </div>
+            <div className="border-t border-base-300 pt-8 flex justify-between items-center">
+              <p className="text-base-content/70">
+                © 2025 Interviewly. All rights reserved.
+              </p>
+              <p className="text-base-content/70">
+                Designed by <span className="font-semibold text-primary">Sumit😎</span>
+              </p>
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
   );
