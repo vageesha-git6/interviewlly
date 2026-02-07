@@ -15,7 +15,7 @@ app.use(clerkMiddleware());
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://interviewllyy.vercel.app",
     credentials: true,
   })
 );
