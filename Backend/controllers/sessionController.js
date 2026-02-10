@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Session from "../models/Session.js";
+import Session from "../models/session.js";
 import { streamClient, chatClient } from "../lib/stream.js";
 
 export async function createSession(req, res) {
