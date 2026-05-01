@@ -213,9 +213,7 @@ const Home = () => {
               <p className="text-base-content/70">
                 © 2025 Interviewly. All rights reserved.
               </p>
-              <p className="text-base-content/70">
-                Designed by <span className="font-semibold text-primary">Sumit😎</span>
-              </p>
+
             </div>
           </div>
         </footer>
